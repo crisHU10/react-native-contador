@@ -2,15 +2,20 @@ import React from 'react'
 import { TouchableOpacity, View, Text, StyleSheet, TouchableNativeFeedback, Platform } from 'react-native';
 
 
-interface Props {
+interface FuncionamientoBoton {
     title: string;
     position?: 'br' | 'bl';
     onPress: () => void;
 }
 
-export const Fab = ({ title, onPress, position = 'br' }: Props ) => {
-
-    const ios = () => {
+export const BotonFlotante = ({ title, onPress, position = 'br' }: FuncionamientoBoton ) => {
+    const plataforma = () => {
+        return (Platform.OS === 'ios') ? "ios" : "android";
+    }
+   const visualizacionPorPlataforma = plataforma();
+ 
+   console.log("visualizacionPorPlataforma: ", visualizacionPorPlataforma);
+   const ios = () => {
         return (
             <TouchableOpacity
                 onPress={ onPress }
@@ -26,7 +31,6 @@ export const Fab = ({ title, onPress, position = 'br' }: Props ) => {
             </TouchableOpacity>
         )
     }
-
     const android = () => {
         return (
             <View
@@ -47,9 +51,12 @@ export const Fab = ({ title, onPress, position = 'br' }: Props ) => {
         )
     }
 
-
-
-    return (Platform.OS === 'ios') ? ios() : android();
+   if(visualizacionPorPlataforma === 'ios'){
+     return ios();
+   }
+   else{
+    return android();
+   }
 }
 
 const styles = StyleSheet.create({

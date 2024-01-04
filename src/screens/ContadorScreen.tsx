@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native';
-import { Fab } from '../components/Fab';
+import { BotonFlotante } from '../components/BotonFlotante';
 
 export const ContadorScreen = () => {
 
@@ -14,12 +14,12 @@ export const ContadorScreen = () => {
                 Contador: { contador }
             </Text>
 
-            <Fab 
+            <BotonFlotante 
                 title="Suma + 1"
                 onPress={ () => setContador( contador + 1 ) }
             />
 
-            <Fab 
+            <BotonFlotante 
                 title="Menos -1"
                 position="bl"
                 onPress={ () => setContador( contador - 1 ) }
